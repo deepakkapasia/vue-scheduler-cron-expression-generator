@@ -1,22 +1,18 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
-</script>
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a target="_blank" href="https://vitejs.dev/">Vite</a> +
-      <a target="_blank" href="https://v2.vuejs.org/">Vue 2</a>.
-    </h3>
+    <h1>{{ msg }}</h1>
+    <h3>Welcome to your Vue.js app</h3>
   </div>
 </template>
+  <script>
+  export default {
+    name: 'Dashboard',
+    data : () => ({
+      msg: 'Hello World'
+    })
+  }
+  </script>
 
 <style scoped>
 h1 {
