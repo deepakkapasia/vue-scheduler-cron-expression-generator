@@ -1,1 +1,6 @@
 @import "./base.css";
+
+#app{
+    background: #e9ebf2;
+    height: 100vh;
+}
