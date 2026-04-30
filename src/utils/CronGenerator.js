@@ -36,12 +36,11 @@ export class CronGenerator {
 
   static generateDaily(minute, hour, selectedDays = []) {
     // If weekdays (M-F) selected and not weekends, use 1-5 for Mon-Fri
-    const daysShort = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-    const hasWeekend = selectedDays.includes('S');
-    const hasWeekday = selectedDays.some(d => ['M', 'T', 'W', 'F'].includes(d));
+    const hasWeekend = selectedDays.includes('S') || selectedDays.includes('Sa');
+    const hasWeekday = selectedDays.some(d => ['M', 'Tu', 'W', 'Th', 'F'].includes(d));
 
     if (hasWeekday && !hasWeekend && selectedDays.length === 5) {
-      // Only weekdays: M, T, W, T, F
+      // Only weekdays: M, Tu, W, Th, F
       return `${minute} ${hour} * * 1-5`;
     } else if (selectedDays.length === 7) {
       // Every day
@@ -50,16 +49,11 @@ export class CronGenerator {
       return `${minute} ${hour} * * *`;
     } else {
       // Convert day names to cron numbers
-      const dayMap = { 'S': 0, 'M': 1, 'T': 2, 'W': 3, 'F': 5, 'F': 5, 'S': 6 };
-      const cronDays = selectedDays.map(d => {
-        if (d === 'S' && selectedDays.indexOf(d) === 0) return '0'; // First S = Sunday
-        if (d === 'S' && selectedDays.indexOf(d) === 6) return '6'; // Last S = Saturday
-        if (d === 'M') return '1';
-        if (d === 'T' && selectedDays[selectedDays.indexOf(d)] === 'T') return '2';
-        if (d === 'W') return '3';
-        if (d === 'F') return '5';
-        return dayMap[d];
-      }).filter((v, i, a) => a.indexOf(v) === i).sort().join(',');
+      const dayMap = { 'S': 0, 'M': 1, 'Tu': 2, 'W': 3, 'Th': 4, 'F': 5, 'Sa': 6 };
+      const cronDays = selectedDays.map(d => dayMap[d])
+        .filter((v, i, a) => a.indexOf(v) === i)
+        .sort((a, b) => a - b)
+        .join(',');
       return `${minute} ${hour} * * ${cronDays}`;
     }
   }
@@ -69,41 +63,24 @@ export class CronGenerator {
     const dayMap = {
       'S': 0,
       'M': 1,
-      'T': 2,
+      'Tu': 2,
       'W': 3,
+      'Th': 4,
       'F': 5,
-      'S': 6
+      'Sa': 6
     };
 
     if (selectedDays.length === 0) selectedDays = ['M'];
 
-    // Handle duplicate T for Tuesday and Thursday
-    const uniqueDays = [];
-    const daysShort = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-    
-    selectedDays.forEach(day => {
-      if (day === 'T' && !uniqueDays.includes('T')) {
-        uniqueDays.push('T'); // Add once
-        // Also add Thursday if needed
-        if (selectedDays.filter(d => d === 'T').length >= 2) {
-          uniqueDays.push('T'); // This will be treated as Thursday in mapping
-        }
-      } else if (!uniqueDays.includes(day)) {
-        uniqueDays.push(day);
-      }
-    });
+    if (selectedDays.length === 7) {
+      // Every day of week
+      return `${minute} ${hour} * * *`;
+    }
 
     const cronDays = selectedDays
-      .map(d => {
-        if (d === 'S') return '0'; // Sunday
-        if (d === 'M') return '1';
-        if (d === 'T') return '2'; // Tuesday - first occurrence
-        if (d === 'W') return '3';
-        if (d === 'F') return '5';
-        return '0';
-      })
+      .map(d => dayMap[d])
       .filter((v, i, a) => a.indexOf(v) === i)
-      .sort()
+      .sort((a, b) => a - b)
       .join(',');
 
     return `${minute} ${hour} * * ${cronDays}`;

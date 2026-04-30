@@ -12,7 +12,12 @@
 
     <div class="description-section">
       <h4 class="desc-title">Description</h4>
-      <p class="desc-text">{{ description }}</p>
+      <div class="description-box">
+        <p class="desc-text">{{ description }}</p>
+        <button class="copy-btn" @click="copyDescription" title="Copy to clipboard">
+          📋
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +43,10 @@ export default {
     copyCron() {
       navigator.clipboard.writeText(this.cronExpression);
       alert('CRON expression copied to clipboard!');
+    },
+    copyDescription() {
+      navigator.clipboard.writeText(this.description);
+      alert('Description copied to clipboard!');
     }
   }
 };
@@ -46,7 +55,6 @@ export default {
 <style scoped>
 .cron-display {
   display: flex;
-  flex-direction: column;
   gap: 20px;
   padding: 20px;
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
@@ -58,6 +66,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  flex: 0 0 30%;
 }
 
 .cron-title {
@@ -75,6 +84,7 @@ export default {
   background: white;
   border-radius: 6px;
   border: 1px solid #ddd;
+  flex: 1;
 }
 
 .cron-code {
@@ -106,16 +116,26 @@ export default {
 .description-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  flex: 0 0 70%;
 }
 
 .desc-title {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #333;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+}
+
+.description-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  flex: 1;
 }
 
 .desc-text {
@@ -123,9 +143,9 @@ export default {
   font-size: 14px;
   color: #555;
   line-height: 1.6;
-  padding: 12px;
-  background: white;
-  border-radius: 4px;
-  border-left: 4px solid #667eea;
+  flex: 1;
+  word-break: break-word;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
 }
 </style>

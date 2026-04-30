@@ -9,29 +9,36 @@
 
         <!-- Main Content -->
         <b-row class="content_section">
-            <b-col cols="12" lg="8">
-                <!-- Start Date/Time Selection -->
-                <div class="form_section">
-                    <h4 class="section-title">1. Select Start Date & Time</h4>
-                    <DatePickerComponent 
-                        v-model="selectedStartDateTime"
-                        @update:start-date-time="onDateTimeChange"
-                    />
-                </div>
+            <!-- Form Sections -->
+            <b-col cols="12">
+                <!-- Date and Recurrence in same row -->
+                <b-row class="">
+                    <b-col cols="12" md="5">
+                        <!-- Start Date/Time Selection -->
+                        <div class="form_section">
+                            <h4 class="section-title">1. Select Start Date & Time</h4>
+                            <DatePickerComponent 
+                                v-model="selectedStartDateTime"
+                                @update:start-date-time="onDateTimeChange"
+                            />
+                        </div>
+                    </b-col>
 
-                <!-- Recurrence Configuration (Merged) -->
-                <div class="form_section">
-                    <h4 class="section-title">2. Set Recurrence Pattern</h4>
-                    <RecurrenceConfigurator
-                        :start-date="selectedStartDateTime"
-                        @change="onRecurrenceChange"
-                    />
-                </div>
+                    <b-col cols="12" md="7">
+                        <!-- Recurrence Configuration (Merged) -->
+                        <div class="form_section">
+                            <h4 class="section-title">2. Set Recurrence Pattern</h4>
+                            <RecurrenceConfigurator
+                                :start-date="selectedStartDateTime"
+                                @change="onRecurrenceChange"
+                            />
+                        </div>
+                    </b-col>
+                </b-row>
 
                 <!-- Generate Button -->
-                <div class="form_section">
+                <div v-if="!cronExpression" class="form_section">
                     <button
-                        v-if="!cronExpression"
                         class="generate-btn"
                         @click="generateCron"
                     >
@@ -41,7 +48,7 @@
             </b-col>
 
             <!-- CRON Display Sidebar -->
-            <b-col cols="12" lg="4">
+            <b-col cols="12">
                 <div class="sidebar">
                     <CronDisplay
                         :cron-expression="cronExpression"
@@ -146,6 +153,10 @@ export default {
     border-radius: 0 0 8px 8px;
     padding: 30px;
     gap: 30px;
+}
+
+.form-row {
+    gap: 20px;
 }
 
 .form_section {
