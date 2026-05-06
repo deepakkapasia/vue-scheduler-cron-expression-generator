@@ -1,6 +1,11 @@
+@import "./theme.css";
 @import "./base.css";
 
-#app{
-    background: #e9ebf2;
-    min-height: 100vh;
+#app {
+  background: var(--bg-secondary);
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
 }

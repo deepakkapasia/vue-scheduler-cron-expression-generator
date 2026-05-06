@@ -1,0 +1,340 @@
+/* ===================================================== */
+/* AGGRESSIVE BOOTSTRAP OVERRIDES */
+/* This file must be imported LAST to override everything */
+/* ===================================================== */
+
+/* Root theme variables */
+:root {
+  --bs-primary: #475569;
+  --bs-secondary: #71717a;
+  --bs-success: #7c9e7f;
+  --bs-warning: #b89a6b;
+  --bs-danger: #9b6b6b;
+  --bs-info: #6b8da8;
+  --bs-light: #faf9f7;
+  --bs-dark: #2a2620;
+}
+
+/* Override all Bootstrap button styles */
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:disabled {
+  background-color: #475569 !important;
+  border-color: #475569 !important;
+  color: #fefdfb !important;
+}
+
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus,
+.btn-secondary:disabled {
+  background-color: #71717a !important;
+  border-color: #71717a !important;
+  color: #fefdfb !important;
+}
+
+.btn-success,
+.btn-success:hover,
+.btn-success:active,
+.btn-success:focus,
+.btn-success:disabled {
+  background-color: #7c9e7f !important;
+  border-color: #7c9e7f !important;
+  color: #fefdfb !important;
+}
+
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning:focus,
+.btn-warning:disabled {
+  background-color: #b89a6b !important;
+  border-color: #b89a6b !important;
+  color: #fefdfb !important;
+}
+
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:focus,
+.btn-danger:disabled {
+  background-color: #9b6b6b !important;
+  border-color: #9b6b6b !important;
+  color: #fefdfb !important;
+}
+
+.btn-info,
+.btn-info:hover,
+.btn-info:active,
+.btn-info:focus,
+.btn-info:disabled {
+  background-color: #6b8da8 !important;
+  border-color: #6b8da8 !important;
+  color: #fefdfb !important;
+}
+
+/* Override all links and anchors */
+a,
+a:hover,
+a:focus,
+.link-primary {
+  color: #475569 !important;
+}
+
+a:visited {
+  color: #334155 !important;
+}
+
+/* Override form controls */
+.form-control,
+.form-select,
+textarea {
+  background-color: #fefdfb !important;
+  border-color: #ddd6ce !important;
+  color: #2a2620 !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
+  background-color: #fefdfb !important;
+  border-color: #475569 !important;
+  color: #2a2620 !important;
+  box-shadow: 0 0 0 0.2rem rgba(71, 85, 105, 0.25) !important;
+}
+
+/* Override text colors */
+.text-primary {
+  color: #475569 !important;
+}
+
+.text-secondary {
+  color: #71717a !important;
+}
+
+.text-success {
+  color: #7c9e7f !important;
+}
+
+.text-warning {
+  color: #b89a6b !important;
+}
+
+.text-danger {
+  color: #9b6b6b !important;
+}
+
+.text-info {
+  color: #6b8da8 !important;
+}
+
+.text-muted {
+  color: #a89d91 !important;
+}
+
+/* Override background colors */
+.bg-primary {
+  background-color: #475569 !important;
+}
+
+.bg-secondary {
+  background-color: #71717a !important;
+}
+
+.bg-success {
+  background-color: #7c9e7f !important;
+}
+
+.bg-warning {
+  background-color: #b89a6b !important;
+}
+
+.bg-danger {
+  background-color: #9b6b6b !important;
+}
+
+.bg-info {
+  background-color: #6b8da8 !important;
+}
+
+.bg-light {
+  background-color: #faf9f7 !important;
+}
+
+.bg-dark {
+  background-color: #2a2620 !important;
+}
+
+/* Override badges */
+.badge-primary,
+.badge-primary:hover {
+  background-color: #475569 !important;
+  color: #fefdfb !important;
+}
+
+.badge-secondary,
+.badge-secondary:hover {
+  background-color: #71717a !important;
+  color: #fefdfb !important;
+}
+
+.badge-success,
+.badge-success:hover {
+  background-color: #7c9e7f !important;
+  color: #fefdfb !important;
+}
+
+.badge-warning,
+.badge-warning:hover {
+  background-color: #b89a6b !important;
+  color: #fefdfb !important;
+}
+
+.badge-danger,
+.badge-danger:hover {
+  background-color: #9b6b6b !important;
+  color: #fefdfb !important;
+}
+
+.badge-info,
+.badge-info:hover {
+  background-color: #6b8da8 !important;
+  color: #fefdfb !important;
+}
+
+/* Override alerts */
+.alert-primary {
+  background-color: rgba(71, 85, 105, 0.1) !important;
+  border-color: #475569 !important;
+  color: #334155 !important;
+}
+
+.alert-success {
+  background-color: rgba(124, 158, 127, 0.1) !important;
+  border-color: #7c9e7f !important;
+  color: #5a7d5c !important;
+}
+
+.alert-warning {
+  background-color: rgba(184, 154, 107, 0.1) !important;
+  border-color: #b89a6b !important;
+  color: #9a7f52 !important;
+}
+
+.alert-danger {
+  background-color: rgba(155, 107, 107, 0.1) !important;
+  border-color: #9b6b6b !important;
+  color: #7a4d4d !important;
+}
+
+.alert-info {
+  background-color: rgba(107, 141, 168, 0.1) !important;
+  border-color: #6b8da8 !important;
+  color: #4a6380 !important;
+}
+
+/* Override cards */
+.card {
+  background-color: #fefdfb !important;
+  border-color: #ddd6ce !important;
+}
+
+.card-header {
+  background-color: #f5f3f0 !important;
+  border-color: #ddd6ce !important;
+  color: #2a2620 !important;
+}
+
+/* Override dropdowns and nav */
+.dropdown-item:hover,
+.dropdown-item:focus,
+.nav-link.active,
+.nav-link:hover {
+  background-color: rgba(71, 85, 105, 0.1) !important;
+  color: #334155 !important;
+}
+
+/* Override pagination */
+.pagination .page-link {
+  color: #475569 !important;
+  background-color: #fefdfb !important;
+  border-color: #ddd6ce !important;
+}
+
+.pagination .page-link:hover {
+  color: #334155 !important;
+  background-color: #f5f3f0 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #475569 !important;
+  border-color: #475569 !important;
+}
+
+/* Override modals */
+.modal-content {
+  background-color: #fefdfb !important;
+  border-color: #ddd6ce !important;
+}
+
+.modal-header {
+  background-color: #f5f3f0 !important;
+  border-color: #ddd6ce !important;
+}
+
+/* Override progress bars */
+.progress {
+  background-color: #ebe7e1 !important;
+}
+
+.progress-bar {
+  background-color: #475569 !important;
+}
+
+/* Override tables */
+table {
+  color: #2a2620 !important;
+}
+
+table thead th {
+  background-color: #f5f3f0 !important;
+  border-color: #ddd6ce !important;
+  color: #2a2620 !important;
+}
+
+table tbody tr:hover {
+  background-color: rgba(71, 85, 105, 0.05) !important;
+}
+
+/* Override borders */
+.border {
+  border-color: #ddd6ce !important;
+}
+
+.border-primary {
+  border-color: #475569 !important;
+}
+
+.border-secondary {
+  border-color: #71717a !important;
+}
+
+.border-success {
+  border-color: #7c9e7f !important;
+}
+
+.border-warning {
+  border-color: #b89a6b !important;
+}
+
+.border-danger {
+  border-color: #9b6b6b !important;
+}
+
+.border-info {
+  border-color: #6b8da8 !important;
+}
